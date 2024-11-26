@@ -1,4 +1,5 @@
 import { IsNumber, IsString, IsDate } from "class-validator";
+import { PrimaryGeneratedColumn } from "typeorm";
 
 export class CreateSellhistoryDto {
   @IsNumber()

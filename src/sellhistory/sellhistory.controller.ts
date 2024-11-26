@@ -8,18 +8,18 @@ export class SellhistoryController {
   constructor(private readonly sellhistoryService: SellhistoryService) {}
 
   @Post()
-  create(@Body() createSellhistoryDto: CreateSellhistoryDto) {
+  async create(@Body() createSellhistoryDto: CreateSellhistoryDto) {
     return this.sellhistoryService.create(createSellhistoryDto);
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.sellhistoryService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.sellhistoryService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return this.sellhistoryService.findOne(id);
   }
 
   @Patch(':id')
