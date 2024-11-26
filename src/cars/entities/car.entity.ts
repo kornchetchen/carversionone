@@ -19,7 +19,7 @@ export class Car {
   @DeleteDateColumn()
   deletedAt: Date;
   
-  @OneToMany(() => CarInfo, (carInfo) => carInfo.carinfoId)
+  @OneToMany(() => CarInfo, (carInfo) => carInfo.carInfoId)
   carInfo: CarInfo[] //?? Cameral inverstigation Text
   
 }

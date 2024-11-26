@@ -9,10 +9,10 @@ import { Entity, Column, PrimaryColumn, ManyToOne, ManyToMany, PrimaryGeneratedC
 @Entity({'name': 'carInfo'})
 export class CarInfo {
   @PrimaryGeneratedColumn('uuid')
-  carinfoId: string;
+  carInfoId: string;
 
-  @Column({'name': 'carinfoName'})
-  carinfoName: string;
+  @Column({'name': 'carInfoName'})
+  carInfoName: string;
 
   @Column()
   isActive: boolean;
