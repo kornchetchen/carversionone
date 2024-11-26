@@ -14,19 +14,19 @@ export class CarInfo {
   @Column({'name': 'carInfoName'})
   carInfoName: string;
 
-  @Column()
+  @Column({'name':'isActive'})
   isActive: boolean;
 
-  @Column()
+  @Column({'name':'year'})
   year: number;
 
-  @Column()
+  @Column({'name':'price'})
   price: number;
 
-  @Column()
+  @Column({'name':'color'})
   color: string;
 
-  @Column()
+  @Column({'name':'isAWD'})
   isAWD: boolean; 
 
   @ManyToOne(() => Car, (car) => car.carInfo)
