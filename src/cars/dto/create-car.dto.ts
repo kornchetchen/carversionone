@@ -18,7 +18,7 @@ export class CreateCarDTO {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => CarInfo, (carInfo) => carInfo.id)
+  @OneToMany(() => CarInfo, (carInfo) => carInfo.car)
   carInfo: CarInfo[];
   created_at: Date;
   updated_at: Date;

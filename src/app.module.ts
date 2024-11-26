@@ -14,7 +14,7 @@ import { SellhistoryModule } from './sellhistory/sellhistory.module';
     port: 5432,
     username: 'postgres',
     password: 'postgres',
-    database: 'carversionone',
+    database: 'versiononecar',
     entities: [ 'dist/**/*.entity{.ts,.js}'], //this craete for auto adding entities
     migrationsRun: false,
     synchronize: true,

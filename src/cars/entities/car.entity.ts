@@ -5,7 +5,7 @@ import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, Dele
 export class Car {
 
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  carId: string;
 
   @Column()
   name: string;
@@ -19,8 +19,8 @@ export class Car {
   @DeleteDateColumn()
   deletedAt: Date;
   
-  @OneToMany(() => CarInfo, (carInfo) => carInfo.id)
-  carInfo: CarInfo[]
+  @OneToMany(() => CarInfo, (carInfo) => carInfo.carinfoId)
+  carInfo: CarInfo[] //?? Cameral inverstigation Text
   
 }
 

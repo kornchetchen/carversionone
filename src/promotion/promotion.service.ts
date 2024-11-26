@@ -11,33 +11,33 @@ export class PromotionService {
     @InjectRepository(Promotion)
     private promotionRepository: Repository<Promotion>,
   ){}
-  async create(createPromotionDTO: CreatePromotionDTO) {
-    const promotions = await this.promotionRepository.create(createPromotionDTO);
-     return this.promotionRepository.save(promotions);
-   }
+  // async create(createPromotionDTO: CreatePromotionDTO) {
+  //   const promotions = await this.promotionRepository.create(createPromotionDTO);
+  //    return this.promotionRepository.save(promotions);
+  //  }
 
-  async findAll() {
-     return this.promotionRepository.find();
-    // return `This action returns all promotion`;
-  }
+  // async findAll() {
+  //    return this.promotionRepository.find();
+  //   // return `This action returns all promotion`;
+  // }
 
-  async findOne(id: string) {
-    try {
-      const promotions = await this.promotionRepository.findOne({where:{id}});
-      if(!promotions) throw new Error('Car not found');
-      promotions.id = "test"
-      return promotions;
-    } catch (error) {
-      throw new BadRequestException(error.message);
-    }
-      // return `This action returns a #${id} promotion`;
-    }
+  // async findOne(id: string) {
+  //   try {
+  //     const promotions = await this.promotionRepository.findOne({where:{id}});
+  //     if(!promotions) throw new Error('Car not found');
+  //     promotions.id = "test"
+  //     return promotions;
+  //   } catch (error) {
+  //     throw new BadRequestException(error.message);
+  //   }
+  //     // return `This action returns a #${id} promotion`;
+  //   }
 
-  update(id: number, updatePromotionDto: UpdatePromotionDto) {
-    return `This action updates a #${id} promotion`;
-  }
+  // update(id: number, updatePromotionDto: UpdatePromotionDto) {
+  //   return `This action updates a #${id} promotion`;
+  // }
 
-  remove(id: number) {
-    return `This action removes a #${id} promotion`;
-  }
+  // remove(id: number) {
+  //   return `This action removes a #${id} promotion`;
+  // }
 }

@@ -7,28 +7,28 @@ import { UpdatePromotionDto } from './dto/update-promotion.dto';
 export class PromotionController {
   constructor(private readonly promotionService: PromotionService) {}
 
-  @Post()
-  async create(@Body() createPromotionDto: CreatePromotionDTO) {
-    return this.promotionService.create(createPromotionDto);
-  }
+  // @Post()
+  // async create(@Body() createPromotionDto: CreatePromotionDTO) {
+  //   return this.promotionService.create(createPromotionDto);
+  // }
 
-  @Get()
-  findAll() {
-    return this.promotionService.findAll();
-  }
+  // @Get()
+  // findAll() {
+  //   return this.promotionService.findAll();
+  // }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.promotionService.findOne(id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.promotionService.findOne(id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePromotionDto: UpdatePromotionDto) {
-    return this.promotionService.update(+id, updatePromotionDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updatePromotionDto: UpdatePromotionDto) {
+  //   return this.promotionService.update(+id, updatePromotionDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.promotionService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.promotionService.remove(+id);
+  // }
 }

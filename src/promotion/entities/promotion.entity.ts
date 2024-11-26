@@ -1,12 +1,12 @@
 import { CarInfo } from "src/carinfo/entities/carinfo.entity";
-import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToMany, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm";
 
 export enum TypeDiscount {
   percentage = 'percentage',
   THB = 'THB',
 }
 
-@Entity()
+@Entity({name: 'prootion'})
 export class Promotion {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -22,6 +22,9 @@ export class Promotion {
   })
   discountType: TypeDiscount;
 
+  @Column('decimal')
+  discount: number;
+  
   @Column()
   startPromotion: Date;
 
@@ -37,6 +40,8 @@ export class Promotion {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @ManyToMany(() => CarInfo, (carInfo) => carInfo.id)
-  carInfo: CarInfo[]
+  // @OneToMany(()=> PromotionCarInfo, (promotionCarInfo) => promotionCarInfo.promotion)
+  // promotionCarInfo: PromotionCarInfo[]
+  // @ManyToMany(() => CarInfo, (carInfo) => carInfo.id)
+  // carInfo: CarInfo[]
 }

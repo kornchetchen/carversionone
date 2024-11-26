@@ -7,28 +7,28 @@ import { UpdateSellhistoryDto } from './dto/update-sellhistory.dto';
 export class SellhistoryController {
   constructor(private readonly sellhistoryService: SellhistoryService) {}
 
-  @Post()
-  async create(@Body() createSellhistoryDto: CreateSellhistoryDto) {
-    return this.sellhistoryService.create(createSellhistoryDto);
-  }
+  // @Post()
+  // async create(@Body() createSellhistoryDto: CreateSellhistoryDto) {
+  //   return this.sellhistoryService.create(createSellhistoryDto);
+  // }
 
-  @Get()
-  async findAll() {
-    return this.sellhistoryService.findAll();
-  }
+  // @Get()
+  // async findAll() {
+  //   return this.sellhistoryService.findAll();
+  // }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return this.sellhistoryService.findOne(id);
-  }
+  // @Get(':id')
+  // async findOne(@Param('id') id: string) {
+  //   return this.sellhistoryService.findOne(id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSellhistoryDto: UpdateSellhistoryDto) {
-    return this.sellhistoryService.update(+id, updateSellhistoryDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateSellhistoryDto: UpdateSellhistoryDto) {
+  //   return this.sellhistoryService.update(+id, updateSellhistoryDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.sellhistoryService.remove(+id);
-  }
+  // @Delete(':id')
+  // // remove(@Param('id') id: string) {
+  //   return this.sellhistoryService.remove(+id);
+  // }
 }

@@ -7,28 +7,28 @@ import { UpdateCarDto } from './dto/update-car.dto';
 export class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
-  @Post()
-  async create(@Body() createCarDto: CreateCarDTO) {
-    return this.carsService.create(createCarDto);
-  }
+  // @Post()
+  // async create(@Body() createCarDto: CreateCarDTO) {
+  //   return this.carsService.create(createCarDto);
+  // }
 
-  @Get()
-  async findAll() {
-    return this.carsService.findAll();
-  }
+  // @Get()
+  // async findAll() {
+  //   return this.carsService.findAll();
+  // }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string) {
-    return this.carsService.findOne(id);
-  }
+  // @Get(':id')
+  // async findOne(@Param('id') id: string) {
+  //   return this.carsService.findOne(id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCarDto: UpdateCarDto) {
-    return this.carsService.update(+id, updateCarDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateCarDto: UpdateCarDto) {
+  //   return this.carsService.update(+id, updateCarDto);
+  // }
 
-  @Delete(':id')
-   remove(@Param('id') id: string) {
-    return this.carsService.remove(+id);
-  }
+  // @Delete(':id')
+  //  remove(@Param('id') id: string) {
+  //   return this.carsService.remove(+id);
+  // }
 }
