@@ -9,18 +9,18 @@ export class CreateCarDTO {
   @Column()
   name: string;
 
-  // @CreateDateColumn()
-  // createdAt: Date;
+  @CreateDateColumn()
+  createdAt: Date;
 
-  // @UpdateDateColumn()
-  // updatedAt: Date;
+  @UpdateDateColumn()
+  updatedAt: Date;
 
-  // @DeleteDateColumn()
-  // deletedAt: Date;
+  @DeleteDateColumn()
+  deletedAt: Date;
 
-  // @OneToMany(() => CarInfo, (carInfo) => carInfo.id)
-  // carInfo: CarInfo[];
-  // created_at: Date;
-  // updated_at: Date;
-  // deleted_at: Date;
+  @OneToMany(() => CarInfo, (carInfo) => carInfo.id)
+  carInfo: CarInfo[];
+  created_at: Date;
+  updated_at: Date;
+  deleted_at: Date;
 }

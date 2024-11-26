@@ -18,8 +18,10 @@ export class CarsService {
     return this.carRepository.save(car);
   }
 
-  findAll() {
-    return `This action returns all cars`;
+  async findAll() {
+    const car = await this.carRepository.find();
+    return car;
+    // return `This action returns all cars`;
   }
 
   findOne(id: number) {

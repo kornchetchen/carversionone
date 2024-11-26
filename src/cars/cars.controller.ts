@@ -13,7 +13,7 @@ export class CarsController {
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.carsService.findAll();
   }
 
