@@ -1,14 +1,14 @@
 import { Car } from "src/cars/entities/car.entity";
 import { CarType } from "src/cartype/entities/cartype.entity";
 import { Promotion } from "src/promotion/entities/promotion.entity";
-import { Entity, Column, PrimaryColumn, ManyToOne, ManyToMany } from "typeorm";
+import { Entity, Column, PrimaryColumn, ManyToOne, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 // export enum DriveType {
 //     TWO_WHEEL_DRIVE = '2WD',
 //     FOUR_WHEEL_DRIVE = '4WD',
 //   }
 @Entity()
 export class CarInfo {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()

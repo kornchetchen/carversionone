@@ -8,7 +8,7 @@ export class PromotionController {
   constructor(private readonly promotionService: PromotionService) {}
 
   @Post()
-  create(@Body() createPromotionDto: CreatePromotionDTO) {
+  async create(@Body() createPromotionDto: CreatePromotionDTO) {
     return this.promotionService.create(createPromotionDto);
   }
 
@@ -19,7 +19,7 @@ export class PromotionController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.promotionService.findOne(+id);
+    return this.promotionService.findOne(id);
   }
 
   @Patch(':id')

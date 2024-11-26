@@ -1,5 +1,5 @@
 import { CarInfo } from "src/carinfo/entities/carinfo.entity";
-import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToMany } from "typeorm";
+import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 export enum TypeDiscount {
   percentage = 'percentage',
@@ -8,7 +8,7 @@ export enum TypeDiscount {
 
 @Entity()
 export class Promotion {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()

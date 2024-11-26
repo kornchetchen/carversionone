@@ -1,20 +1,38 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateCarinfoDTO } from './dto/create-carinfo.dto';
 import { UpdateCarinfoDto } from './dto/update-carinfo.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { CarInfo } from './entities/carinfo.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class CarinfoService {
-  create(createCarinfoDto: CreateCarinfoDTO) {
-    return 'This action adds a new carinfo';
+  constructor(
+    @InjectRepository(CarInfo)
+    private carinfoRepository: Repository<CarInfo>
+  ){}
+
+  async create(createCarinfoDto: CreateCarinfoDTO) {
+    const carinfo = await this.carinfoRepository.create(createCarinfoDto);
+    return this.carinfoRepository.save(carinfo);
   }
 
-  findAll() {
-    return `This action returns all carinfo`;
+  async findAll() {
+    const carinfo = await this.carinfoRepository.find();
+    return carinfo;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} carinfo`;
-  }
+  async findOne(id: string) {
+    try {
+      const carInfo = await this.carinfoRepository.findOne({where:{id}});
+      if(!carInfo) throw new Error('Car not found');
+      carInfo.id = "test"
+      return carInfo;
+    } catch (error) {
+      throw new BadRequestException(error.message);
+    }
+      // return `This action returns a #${id} car`;
+    }
 
   update(id: number, updateCarinfoDto: UpdateCarinfoDto) {
     return `This action updates a #${id} carinfo`;

@@ -8,18 +8,18 @@ export class CarinfoController {
   constructor(private readonly carinfoService: CarinfoService) {}
 
   @Post()
-  create(@Body() createCarinfoDto: CreateCarinfoDTO) {
+  async create(@Body() createCarinfoDto: CreateCarinfoDTO) {
     return this.carinfoService.create(createCarinfoDto);
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.carinfoService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.carinfoService.findOne(+id);
+  async indOne(@Param('id') id: string) {
+    return this.carinfoService.findOne(id);
   }
 
   @Patch(':id')

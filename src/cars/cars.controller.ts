@@ -18,8 +18,8 @@ export class CarsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.carsService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return this.carsService.findOne(id);
   }
 
   @Patch(':id')
@@ -28,7 +28,7 @@ export class CarsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+   remove(@Param('id') id: string) {
     return this.carsService.remove(+id);
   }
 }

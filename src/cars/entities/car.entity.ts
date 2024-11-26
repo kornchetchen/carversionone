@@ -21,5 +21,6 @@ export class Car {
   
   @OneToMany(() => CarInfo, (carInfo) => carInfo.id)
   carInfo: CarInfo[]
+  
 }
 
