@@ -4,7 +4,7 @@ import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, Dele
 @Entity({'name': 'carType'})
 export class CarType {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  carTypeId: string;
 
   @Column({
     type: 'enum',

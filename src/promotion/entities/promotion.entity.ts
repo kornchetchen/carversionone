@@ -6,10 +6,10 @@ export enum TypeDiscount {
   THB = 'THB',
 }
 
-@Entity({name: 'prootion'})
+@Entity({name: 'promotion'})
 export class Promotion {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  promotionId: string;
 
   @Column()
   title: string;

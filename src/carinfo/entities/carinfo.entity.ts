@@ -11,8 +11,8 @@ export class CarInfo {
   @PrimaryGeneratedColumn('uuid')
   carinfoId: string;
 
-  @Column()
-  carinfo_name: string;
+  @Column({'name': 'carinfoName'})
+  carinfoName: string;
 
   @Column()
   isActive: boolean;
