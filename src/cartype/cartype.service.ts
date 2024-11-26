@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreateCartypeDto } from './dto/create-cartype.dto';
+import { CreateCartpeDTO } from './dto/create-cartype.dto';
 import { UpdateCartypeDto } from './dto/update-cartype.dto';
 
 @Injectable()
 export class CartypeService {
-  create(createCartypeDto: CreateCartypeDto) {
+  create(createCartypeDto: CreateCartpeDTO) {
     return 'This action adds a new cartype';
   }
 

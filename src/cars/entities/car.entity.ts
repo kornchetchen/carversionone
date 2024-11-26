@@ -3,6 +3,7 @@ import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, Dele
 
 @Entity()
 export class Car {
+  
   @PrimaryColumn('uuid')
   id: string;
 

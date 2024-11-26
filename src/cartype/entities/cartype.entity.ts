@@ -6,7 +6,10 @@ export class CarType {
   @PrimaryColumn()
   id: string;
 
-  @Column()
+  @Column({
+    type: 'enum',
+    enum: ['C-SEGMENT', 'SUV', 'SEDAN', 'HRV'],
+  })
   model: string;
 
   @CreateDateColumn()

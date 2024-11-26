@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { CartypeService } from './cartype.service';
-import { CreateCartypeDto } from './dto/create-cartype.dto';
+import { CreateCartpeDTO } from './dto/create-cartype.dto';
 import { UpdateCartypeDto } from './dto/update-cartype.dto';
 
 @Controller('cartype')
@@ -8,7 +8,7 @@ export class CartypeController {
   constructor(private readonly cartypeService: CartypeService) {}
 
   @Post()
-  create(@Body() createCartypeDto: CreateCartypeDto) {
+  create(@Body() createCartypeDto: CreateCartpeDTO) {
     return this.cartypeService.create(createCartypeDto);
   }
 

@@ -1,6 +1,6 @@
 import { IsString, IsBoolean, IsNumber, IsArray } from "class-validator";
 
-export class CreateDTO {
+export class CreateCarinfoDTO {
   @IsString()
   name: string;
 

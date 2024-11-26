@@ -16,6 +16,7 @@ import { SellhistoryModule } from './sellhistory/sellhistory.module';
     password: 'postgres',
     database: 'carversionone',
     entities: [ 'dist/**/*.entity{.ts,.js}'], //this craete for auto adding entities
+    migrationsRun: false,
     synchronize: true,
   }),CarsModule, CarinfoModule, CartypeModule, PromotionModule, SellhistoryModule],
   controllers: [AppController],

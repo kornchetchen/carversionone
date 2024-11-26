@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePromotionDto } from './dto/create-promotion.dto';
+import { CreatePromotionDTO } from './dto/create-promotion.dto';
 import { UpdatePromotionDto } from './dto/update-promotion.dto';
 
 @Injectable()
 export class PromotionService {
-  create(createPromotionDto: CreatePromotionDto) {
+  create(createPromotionDto: CreatePromotionDTO) {
     return 'This action adds a new promotion';
   }
 
