@@ -7,8 +7,8 @@ export class Car {
   @PrimaryGeneratedColumn('uuid')
   carId: string;
 
-  @Column()
-  name: string;
+  @Column({'name': 'carName'})
+  carName: string;
 
   @CreateDateColumn()
   createdAt: Date;

@@ -6,28 +6,28 @@ export class Sellhistory {
   @PrimaryGeneratedColumn('uuid')
   sellHistoryId: string;
 
-  @Column()
+  @Column({name: 'price'})
   price: number;
 
-  @Column()
+  @Column({name: 'name'})
   name: string;
 
-  @Column()
+  @Column({name: 'startPromotion'})
   startPromotion: Date;
 
-  @Column()
+  @Column({name: 'endPromotion'})
   endPromotion: Date;
 
-  @Column()
+  @Column({name: 'model'})
   model: string;
 
-  @Column()
+  @Column({name: 'brand'})
   brand: string;
 
-  @Column()
+  @Column({'name': 'color'})
   color: string;
 
-  @Column()
+  @Column({'name': 'year'})
   year: number; 
 }
 

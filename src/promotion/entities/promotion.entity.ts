@@ -11,10 +11,10 @@ export class Promotion {
   @PrimaryGeneratedColumn('uuid')
   promotionId: string;
 
-  @Column()
-  title: string;
+  @Column({'name': 'promotionTitle'})
+  promotionTitle: string;
 
-  @Column()
+  @Column({'name': 'description'})
   description: string;
   @Column({
     type: 'enum',
@@ -25,19 +25,19 @@ export class Promotion {
   @Column('decimal')
   discount: number;
   
-  @Column()
+  @Column({'name': 'startPromotion'})
   startPromotion: Date;
 
-  @Column()
+  @Column({'name': 'endPromotion'})
   endPromotion: Date;
 
-  @CreateDateColumn()
+  @CreateDateColumn({'name': 'createdAt'})
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({'name': 'updatedAt'})
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({'name': 'deletedAt'})
   deletedAt: Date;
 
   // @OneToMany(()=> PromotionCarInfo, (promotionCarInfo) => promotionCarInfo.promotion)

@@ -1,5 +1,5 @@
 import { CarInfo } from "src/carinfo/entities/carinfo.entity";
-import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({'name': 'carType'})
 export class CarType {
@@ -12,13 +12,13 @@ export class CarType {
   })
   model: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({'name': 'createdAt'})
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({'name': 'updatedAt'})
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({'name': 'deletedAt'})
   deletedAt: Date;
 
   @OneToMany(() => CarInfo, (carInfo) => carInfo.car)
