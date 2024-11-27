@@ -3,7 +3,7 @@ import { CreateCartpeDTO } from './dto/create-cartype.dto';
 import { UpdateCartypeDto } from './dto/update-cartype.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CarType } from './entities/cartype.entity';
+import { CarType } from '../settings/entities/cartype.entity';
 
 @Injectable()
 export class CartypeService {

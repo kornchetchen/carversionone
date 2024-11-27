@@ -1,14 +1,14 @@
 import { CarInfo } from "src/carinfo/entities/carinfo.entity";
-import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
-export class Car {
+export class Brand {
 
   @PrimaryGeneratedColumn('uuid')
-  carId: string;
+  brandId: string;
 
-  @Column({'name': 'carName'})
-  carName: string;
+  @Column({'name': 'brandName'})
+  brandName: string;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -20,7 +20,6 @@ export class Car {
   deletedAt: Date;
   
   @OneToMany(() => CarInfo, (carInfo) => carInfo.carInfoId)
-  carInfo: CarInfo[] //?? Cameral inverstigation Text
+  carInfo: CarInfo[] 
   
 }
-

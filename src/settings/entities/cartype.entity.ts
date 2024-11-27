@@ -1,5 +1,5 @@
 import { CarInfo } from "src/carinfo/entities/carinfo.entity";
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn, PrimaryColumn, JoinColumn } from "typeorm";
 
 @Entity({'name': 'carType'})
 export class CarType {
@@ -21,6 +21,6 @@ export class CarType {
   @DeleteDateColumn({'name': 'deletedAt'})
   deletedAt: Date;
 
-  @OneToMany(() => CarInfo, (carInfo) => carInfo.car)
+  @OneToMany(() => CarInfo, (carInfo) => carInfo.carInfoId)
   carInfo: CarInfo[]
 }

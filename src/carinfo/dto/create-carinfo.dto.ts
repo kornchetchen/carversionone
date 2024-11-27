@@ -1,8 +1,14 @@
 import { IsString, IsBoolean, IsNumber, IsArray } from "class-validator";
 
 export class CreateCarinfoDTO {
+  @IsNumber()
+  carId: number;
+
   @IsString()
-  name: string;
+  carInfoName:string;
+
+  @IsString()
+  carName: string;
 
   @IsBoolean()
   isActive: boolean;
@@ -20,12 +26,9 @@ export class CreateCarinfoDTO {
   isAWD: boolean;
 
   @IsNumber()
-  carId: number;
-
-  @IsNumber()
   cartypeId: number;
 
   @IsArray()
   @IsNumber({  })
-  promotionIds: number[];
+  promotionId: number[];
 }

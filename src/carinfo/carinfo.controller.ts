@@ -7,10 +7,10 @@ import { UpdateCarinfoDto } from './dto/update-carinfo.dto';
 export class CarinfoController {
   constructor(private readonly carinfoService: CarinfoService) {}
 
-  // @Post()
-  // async create(@Body() createCarinfoDto: CreateCarinfoDTO) {
-  //   return this.carinfoService.create(createCarinfoDto);
-  // }
+  @Post()
+  async create(@Body() createCarinfoDto: CreateCarinfoDTO) {
+    return this.carinfoService.create(createCarinfoDto);
+  }
 
   // @Get()
   // async findAll() {

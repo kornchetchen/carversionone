@@ -1,7 +1,7 @@
-import { Car } from "src/cars/entities/car.entity";
-import { CarType } from "src/cartype/entities/cartype.entity";
+import { CarType } from "src/settings/entities/cartype.entity";
 import { Promotion } from "src/promotion/entities/promotion.entity";
-import { Entity, Column, PrimaryColumn, ManyToOne, ManyToMany, PrimaryGeneratedColumn, JoinTable } from "typeorm";
+import { Entity, Column, PrimaryColumn, ManyToOne, ManyToMany, PrimaryGeneratedColumn, JoinTable, CreateDateColumn, DeleteDateColumn, UpdateDateColumn, JoinColumn } from "typeorm";
+import { Brand } from "src/settings/entities/brand.entity";
 // export enum DriveType {
 //     TWO_WHEEL_DRIVE = '2WD',
 //     FOUR_WHEEL_DRIVE = '4WD',
@@ -29,14 +29,26 @@ export class CarInfo {
   @Column({'name':'isAWD'})
   isAWD: boolean; 
 
-  @ManyToOne(() => Car, (car) => car.carInfo)
-  car: Car
+  @ManyToOne(() =>CarType , (CarType) => CarType.carInfo)
+  @JoinColumn({ name: 'carTypeId' })
+  carType: CarType
 
-  @ManyToOne(() =>CarInfo , (CarInfo) => CarInfo.car)
-  cartype: CarType
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
+
+  @ManyToOne(() => Brand, (brand) => brand.carInfo)
+  @JoinColumn({ name: 'brandId' })
+  brand: Brand
   
-  @ManyToMany(() => Promotion)
-  @JoinTable({'name': 'promotionCarInfo'}) ///carmel case 
+  @ManyToMany(() => Promotion )
+  @JoinTable({'name': 'promotionCarInfo'})
   promotion: Promotion[]
 
 }
