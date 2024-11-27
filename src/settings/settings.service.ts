@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateSettingDto } from './dto/create-setting.dto';
 import { UpdateSettingDto } from './dto/update-setting.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -36,10 +36,30 @@ export class SettingsService {
     return `This action returns a #${id} setting`;
   }
 
-  update(id: number, updateSettingDto: UpdateSettingDto) {
-    return `This action updates a #${id} setting`;
+async updateCartype(id: string, updateSettingDto: UpdateSettingDto): Promise<CarType> {
+  if (!id)
+    throw new Error(`updateCartype error: id is empty.`);
+  try {
+    const cartype = await this.cartypeRepository.findOne({ where: { carTypeId: id } });
+    if (!cartype) throw new NotFoundException('Cartype not found');
+    updateSettingDto.carTypeId = id;
+    return await this.cartypeRepository.save(updateSettingDto);
+  } catch (ex: any) {
+    throw new Error(`Update cartype error: ${ex.message}.`);
   }
-
+}
+  async updateBrand(id: string, updateSettingDto: UpdateSettingDto):Promise<Brand> {
+    if (!id)
+      throw new Error(`updateCartype error: id is empty.`);
+    try {
+      const cartype = await this.brandRepository.findOne({ where: { brandId: id } });
+      if (!cartype) throw new NotFoundException('Cartype not found');
+      updateSettingDto.carTypeId = id;
+      return await this.brandRepository.save(updateSettingDto);
+    } catch (ex: any) {
+      throw new Error(`Update cartype error: ${ex.message}.`);
+    }
+  }
   remove(id: number) {
     return `This action removes a #${id} setting`;
   }

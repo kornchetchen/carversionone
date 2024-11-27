@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateCarinfoDTO } from './dto/create-carinfo.dto';
 import { UpdateCarinfoDto } from './dto/update-carinfo.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CarInfo } from './entities/carinfo.entity';
+import { CarInfo } from '../promotions/entities/carinfo.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

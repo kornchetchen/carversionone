@@ -28,9 +28,14 @@ export class SettingsController {
     return this.settingsService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSettingDto: UpdateSettingDto) {
-    return this.settingsService.update(+id, updateSettingDto);
+  @Patch('cartype/:id')
+  updateCartype(@Param('id') id: string, @Body() updateSettingDto: UpdateSettingDto) {
+    return this.settingsService.updateCartype(id, updateSettingDto);
+  }
+
+  @Patch('brand/:id')
+  updateBrand(@Param('id') id: string, @Body() updateSettingDto: UpdateSettingDto) {
+    return this.settingsService.updateBrand(id, updateSettingDto);
   }
 
   @Delete(':id')

@@ -1,4 +1,4 @@
-import { CarInfo } from "src/carinfo/entities/carinfo.entity";
+import { CarInfo } from "src/promotions/entities/carinfo.entity";
 import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToMany, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm";
 
 export enum TypeDiscount {

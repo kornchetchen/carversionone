@@ -11,11 +11,11 @@ export class SellhistoryService {
     @InjectRepository(Sellhistory)
     private sellhistoryRepository: Repository<Sellhistory>,
   ){}
-  // async create(createSellhistoryDto: CreateSellhistoryDto) {
-  //   const sellhisto = this.sellhistoryRepository.create(createSellhistoryDto);  
-  //   return await this.sellhistoryRepository.save(sellhisto);
-  //   // return 'This action adds a new sellhistory';
-  // }
+  async create(createSellhistoryDto: CreateSellhistoryDto) {
+    const sellhisto = this.sellhistoryRepository.create(createSellhistoryDto);  
+    return await this.sellhistoryRepository.save(sellhisto);
+    // return 'This action adds a new sellhistory';
+  }
 
   // async findAll() {
   //   const sellhisto = await this.sellhistoryRepository.find();

@@ -7,10 +7,10 @@ import { UpdateSellhistoryDto } from './dto/update-sellhistory.dto';
 export class SellhistoryController {
   constructor(private readonly sellhistoryService: SellhistoryService) {}
 
-  // @Post()
-  // async create(@Body() createSellhistoryDto: CreateSellhistoryDto) {
-  //   return this.sellhistoryService.create(createSellhistoryDto);
-  // }
+  @Post()
+  async create(@Body() createSellhistoryDto: CreateSellhistoryDto) {
+    return this.sellhistoryService.create(createSellhistoryDto);
+  }
 
   // @Get()
   // async findAll() {

@@ -1,4 +1,4 @@
-import { CarInfo } from "src/carinfo/entities/carinfo.entity";
+import { CarInfo } from "src/promotions/entities/carinfo.entity";
 import { Column, CreateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 

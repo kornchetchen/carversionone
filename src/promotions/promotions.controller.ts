@@ -7,9 +7,9 @@ import { UpdatePromotionDto } from './dto/update-promotion.dto';
 export class PromotionsController {
   constructor(private readonly promotionsService: PromotionsService) {}
 
-  @Post()
+  @Post('carinfo')
   create(@Body() createPromotionDto: CreatePromotionDto) {
-    return this.promotionsService.create(createPromotionDto);
+    return this.promotionsService.createCarInfo(createPromotionDto);
   }
 
   @Get()

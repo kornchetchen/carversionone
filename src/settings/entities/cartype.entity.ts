@@ -1,4 +1,4 @@
-import { CarInfo } from "src/carinfo/entities/carinfo.entity";
+import { CarInfo } from "src/promotions/entities/carinfo.entity";
 import { Entity, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn, PrimaryColumn, JoinColumn } from "typeorm";
 
 @Entity({'name': 'carType'})
