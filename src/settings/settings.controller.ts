@@ -24,7 +24,7 @@ export class SettingsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.settingsService.findOne(+id);
   }
 

@@ -1,37 +1,36 @@
+import { IsEnum, IsNotEmpty, IsString } from "class-validator";
 import { CarInfo } from "src/promotions/entities/carinfo.entity";
 import { Column, CreateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { CarTypeEnum } from "../sell.model";
 
 
 export class CreateSettingDto {
 
-    @PrimaryGeneratedColumn('uuid')
+    @IsString()
+    @IsNotEmpty()
     settingId: string;
     
-    @PrimaryGeneratedColumn('uuid')
+    @IsString()
+    @IsNotEmpty()
     brandId: string;
   
-    @Column({'name': 'carName'})
+    @IsString()
+    @IsNotEmpty()
     brandName: string;
     
-    @PrimaryGeneratedColumn('uuid')
+    @IsString()
+    @IsNotEmpty()
     carTypeId: string;
   
-    @Column({
-      type: 'enum',
-      enum: ['C-SEGMENT', 'SUV', 'SEDAN', 'HRV'],
-    })
+  
+    @IsString()
+    // @IsEnum(CarTypeEnum)
     model: string;
 
-    @CreateDateColumn()
+
     createdAt: Date;
-
-    @UpdateDateColumn()
     updatedAt: Date;
-
-    @DeleteDateColumn()
     deletedAt: Date;
 
-    @OneToMany(() => CarInfo, (carInfo) => carInfo.carInfoId)
-    carInfo: CarInfo[] 
         
 }

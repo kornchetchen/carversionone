@@ -33,7 +33,9 @@ export class SettingsService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} setting`;
+    this.findOne(id);
+    return
+    // return `This action returns a #${id} setting`;
   }
 
 async updateCartype(id: string, updateSettingDto: UpdateSettingDto): Promise<CarType> {
@@ -54,7 +56,7 @@ async updateCartype(id: string, updateSettingDto: UpdateSettingDto): Promise<Car
     try {
       const cartype = await this.brandRepository.findOne({ where: { brandId: id } });
       if (!cartype) throw new NotFoundException('Cartype not found');
-      updateSettingDto.carTypeId = id;
+      updateSettingDto.brandId = id;
       return await this.brandRepository.save(updateSettingDto);
     } catch (ex: any) {
       throw new Error(`Update cartype error: ${ex.message}.`);
