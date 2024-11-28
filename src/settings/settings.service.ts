@@ -6,6 +6,7 @@ import { CarType } from './entities/cartype.entity';
 import { Repository } from 'typeorm';
 import { Brand } from './entities/brand.entity';
 
+
 @Injectable()
 export class SettingsService {
   constructor(
@@ -17,8 +18,14 @@ export class SettingsService {
   ) {}
 
   async createCartype(createSettingDto: CreateSettingDto) {
-    const cartype =  this.cartypeRepository.create(createSettingDto);
-    return this.cartypeRepository.save(cartype);
+    try {
+      const cartype = this.cartypeRepository.create(createSettingDto);
+      return this.cartypeRepository.save(cartype);
+    } catch (error) {
+      throw new Error(`Create cartype error: ${error.message}.`);
+    }
+    // const cartype =  this.cartypeRepository.create(createSettingDto);
+    // return this.cartypeRepository.save(cartype);
     // return 'This action adds a new setting';
   }
 
@@ -44,7 +51,7 @@ async updateCartype(id: string, updateSettingDto: UpdateSettingDto): Promise<Car
   try {
     const cartype = await this.cartypeRepository.findOne({ where: { carTypeId: id } });
     if (!cartype) throw new NotFoundException('Cartype not found');
-    updateSettingDto.carTypeId = id;
+    // updateSettingDto.carTypeId = id;
     return await this.cartypeRepository.save(updateSettingDto);
   } catch (ex: any) {
     throw new Error(`Update cartype error: ${ex.message}.`);
@@ -56,7 +63,7 @@ async updateCartype(id: string, updateSettingDto: UpdateSettingDto): Promise<Car
     try {
       const cartype = await this.brandRepository.findOne({ where: { brandId: id } });
       if (!cartype) throw new NotFoundException('Cartype not found');
-      updateSettingDto.brandId = id;
+      // updateSettingDto.brandId = id;
       return await this.brandRepository.save(updateSettingDto);
     } catch (ex: any) {
       throw new Error(`Update cartype error: ${ex.message}.`);

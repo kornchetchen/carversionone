@@ -9,9 +9,11 @@ export class CreateSellhistoryDto {
   name: string;
 
   @IsDate()
+  @IsString()
   startPromotion: Date;
 
   @IsDate()
+  @IsString()
   endPromotion: Date;
 
   @IsString()

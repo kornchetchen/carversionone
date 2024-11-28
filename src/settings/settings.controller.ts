@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes } from '@nestjs/common';
 import { SettingsService } from './settings.service';
 import { CreateSettingDto } from './dto/create-setting.dto';
 import { UpdateSettingDto } from './dto/update-setting.dto';
@@ -12,11 +12,10 @@ export class SettingsController {
     return await this.settingsService.createBrand(createSettingDto);
   }
   @Post('cartype')
+  @UsePipes()
   async createCarType(@Body() createSettingDto: CreateSettingDto) {
     return await this.settingsService.createCartype(createSettingDto);
   }
-  // how to set apiname
-
 
   @Get()
   findAll() {
@@ -24,7 +23,7 @@ export class SettingsController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) { 
     return this.settingsService.findOne(+id);
   }
 

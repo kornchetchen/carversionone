@@ -1,30 +1,28 @@
 import { IsEnum, IsNotEmpty, IsString } from "class-validator";
-import { CarInfo } from "src/promotions/entities/carinfo.entity";
-import { Column, CreateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { CarTypeEnum } from "../sell.model";
 
 
 export class CreateSettingDto {
 
-    @IsString()
-    @IsNotEmpty()
-    settingId: string;
+    // @IsString()
+    // // @IsNotEmpty()
+    // settingId: string;
     
-    @IsString()
-    @IsNotEmpty()
-    brandId: string;
+    // @IsString()
+    // // @IsNotEmpty()
+    // brandId: string;
   
     @IsString()
     @IsNotEmpty()
     brandName: string;
     
-    @IsString()
-    @IsNotEmpty()
-    carTypeId: string;
+    // @IsString()
+    // // @IsNotEmpty()
+    // carTypeId: string;
   
-  
-    @IsString()
-    // @IsEnum(CarTypeEnum)
+    
+    @IsString({'message': 'Model is be a string'})
+    @IsEnum(CarTypeEnum,{'message': 'Model must be a valid CarTypeEnum value'})
     model: string;
 
 
