@@ -30,12 +30,12 @@ export class SettingsService {
   }
 
   async createBrand(createSettingDto: CreateSettingDto) {
-    const Brand =  this.brandRepository.create(createSettingDto);
-    return this.brandRepository.save(Brand);
+    const bran =  this.brandRepository.create(createSettingDto);
+    return this.brandRepository.save(bran);
     // return 'This action adds a new setting';
   }
 
-  findAll() {
+  findAll(brand: string, cartype: string) {
     return `This action returns all settings`;
   }
 
