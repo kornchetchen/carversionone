@@ -1,124 +1,197 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, Req, Inject, HttpCode, Redirect, HostParam, Query, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query} from '@nestjs/common';
 import { SettingsService } from './settings.service';
 import { CreateSettingDto } from './dto/create-setting.dto';
 import { UpdateSettingDto } from './dto/update-setting.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Brand } from './entities/brand.entity';
-import { CarType } from './entities/cartype.entity';
 
-@Controller('settings') //checking code from here
+
+@Controller('settings') 
 export class SettingsController {
   constructor(
-    // @InjectRepository(CarType)
-    // private cartypeRepository: Repository<CarType>,
-
-    // @InjectRepository(Brand)
-    // private brandRepository: Repository<Brand>,
-
     private readonly settingsService: SettingsService) 
     {}
 
 
-//brand type
   @Post('brand')
-  // @HttpCode(201)
-  @HttpCode(204)
-  async createBrand(@Body() createSettingDto: CreateSettingDto) { //
-    return await this.settingsService.createBrand(createSettingDto);
+async createBrand(@Body() createSettingDto: CreateSettingDto) { 
+    const brandsample = {
+      brandName: 'brandName',
+      brandId: 1
+    }
+    console.log(createSettingDto);
+    return  await {
+      message: createSettingDto
+    }
   }
 
-  
-    @Post('brand')
-    @HttpCode(204)
-    async createBrand204(@HostParam('cartype') cartype: string, @Body() createSettingDto: CreateSettingDto) {
-      return await this.settingsService.createBrand(createSettingDto);
-    }
     
   @Post('cartype')
-  // @HttpCode(201)
-  @HttpCode(204)
   async createCarType(@Body() createSettingDto: CreateSettingDto) {
-    return await this.settingsService.createCartype(createSettingDto);
+    console.log(createSettingDto)
+    const cartypesample = {
+      cartype: 'cartype',
+      cartypeId: 1
+    }
+    return  {
+      message: createSettingDto
+    }
   }
 
-  @Get('cartype')
-  @Redirect('http://localhost:3000/settings', 302)
-  getcartype(@Query('cartype') cartype: string) {
-    return { cartype };
+
+
+
+
+  @Get('cartypequery')
+ async getcartype(
+  @Query('cartype') cartype: string,
+  @Query('cartypeId') cartypeId: string,
+  @Query('cartypeName') cartypeName: string,
+  @Query('cartypeDescription') cartypeDescription: string
+) {
+
+    console.log(cartype);
+    console.log(cartypeId);
+    console.log(cartypeName);
+    console.log(cartypeDescription);
+
+    return cartype ;
   }
 
-  @Get('brand')
-  @Redirect('http://localhost:3000/settings', 302)
-  getbrand(@Query('brand') brand: string) {
-    return { brand };
+
+
+
+
+
+
+  @Get('brandnames')
+ async  getBrands(
+  @Query('brand') brand: string,
+  @Query('brandId') brandId: string,
+  @Query('brandName') brandName: string,
+  @Query('brandDescription') brandDescription: string
+
+) {
+    console.log(brand);
+    console.log(brandId);
+    console.log(brandName);
+    console.log(brandDescription);
+
+    return brand ;
   }
+
+
+
 
   
-@Get('settings')
-searchBrand(
-  @Query('brand') brand: string,
+@Get('more') 
+searchSettings(
+  @Query('brandname') brandName: string,
   @Query('cartype') cartype: string,
 ): string {
-  return `Brand: ${brand}, Cartype: ${cartype}`;
+  console.log(cartype);
+  console.log(brandName);
+  return`Brand: ${brandName}, Cartype: ${cartype}`;
 }
 
-  @Get(':brand/:id')
-  async findOnebarnd(@Param('id') id: string) { 
-    const barndid = await this.settingsService.findOne(+id);
-    if (barndid === null) {
-      throw new NotFoundException(`Barnd with id ${id} not found`);
-    }
-    return barndid;
+@Get('brandss')
+async searchBrand(
+  @Query('brandId') brandId: string,
+  @Query('brandName') brandName: string,
+
+) {
+  console.log(brandId);
+  console.log(brandName); 
+  return  {brandId,brandName}
+} 
+
+
+
+@Get('brandsss')
+searchBrandTimeParseInt(
+  @Query('createAt') createAtParam: string,
+  @Query('updateAt') updateAtParam: string,
+) {
+  console.log(createAtParam);
+  console.log(updateAtParam);
+}
+
+
+  @Get('byId/:brand')
+  async findOnebarndById(
+    @Param('id') id: string,
+    @Param('brand') brand: string
+  )
+      
+  { 
+    console.log(id);
+    console.log(brand);
+    console.log("string function ",this.findOnebarndById);
   }
 
 
-  @Get(':cartype/:id')
-  async findOnecartype(@Param('id') id: string) { 
-    const carTypeId = await this.settingsService.findOne(+id);
-    if (carTypeId === null) {
-      throw new NotFoundException(`Cartype with id ${id} not found`);
-    }
+  @Get('byCarType/:id/:cartype/:color') ///path first => param
+  async findOnecartype(
+    @Param('id') id: string,
+    @Param('cartype') cartype: string,
+    @Param('color') color:string)
+
+    { 
+    console.log(id);
+    console.log(cartype);
+    console.log(color);
+    console.log("Car type you want ",this.findOnecartype);
   }
+
+  @Get(':brand')
+  async findWithBrandDetails(
+    @Param('brand') brand: string,
+    @Param('model') model: string,
+    @Param('year') year: string,
+    @Param('price') price: string
+  )
+   {
+    console.log(brand);
+    console.log(model);
+    console.log(year);
+    console.log(price);
+    console.log("Car Detail ",this.findWithBrandDetails);
+   }
 
   @Get(':brand/:brandname')
   async findOnecartypebrandName(@Param('brandName') brandName: string) { 
-    const carTypeId = await this.settingsService.findOne(+brandName);
-    if (carTypeId === null) {
-      throw new NotFoundException(`Cartype with id ${brandName} not found`);
-    }
+    console.log(brandName);
   }
   
   @Get(':cartype/:model')
-  async findOnecartypemodel(@Param('  model')   model: string) { 
-    const carTypeId = await this.settingsService.findOne(+  model);
-    if (carTypeId === null) {
-      throw new NotFoundException(`Cartype with id ${  model} not found`);
-    }
+  async findOnecartypemodel(@Param('model')   model: string) { 
+    console.log(model);
   }
-
-
-
-
-
+//uuid
   @Patch('cartype/:id')
-  @Redirect('http://localhost:3000/settings', 302)
-  updateCartype(@Param('id') id: string,
+  updateCartype(@Param('id') id: UpdateSettingDto,
    @Body() updateSettingDto: UpdateSettingDto) {
-    return this.settingsService.updateCartype(id, updateSettingDto);
+    console.log(updateSettingDto);
   }
-
-  
 
   @Patch('brand/:id')
-  @Redirect('http://localhost:3000/settings', 302)
   updateBrand(@Param('id') id: string, @Body() updateSettingDto: UpdateSettingDto) {
-    return this.settingsService.updateBrand(id, updateSettingDto);
+    console.log(updateSettingDto);
+  }
+
+  @Patch('brand/:id')
+  async updateBrandDates (
+    @Param('id') id: string,
+    @Body() updateSettingDto: UpdateSettingDto,
+    @Query('createAt') createAtParam: UpdateSettingDto,
+    @Query('updateAt') updateAtParam: UpdateSettingDto,
+  ) {
+    console.log(createAtParam);
+    console.log(updateAtParam);
+//parma private static //quer for using on public 
+
   }
 
   @Delete(':id')
-  @Redirect('http://localhost:3000/settings', 302)
-  remove(@Param('id') id: string) {
-    return this.settingsService.remove(+id);
+  remove(@Param('id') id: UpdateSettingDto) {
+    console.log(id);
   }
 }
