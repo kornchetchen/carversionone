@@ -3,7 +3,6 @@ import { SettingsService } from './settings.service';
 import { CreateSettingDto } from './dto/create-setting.dto';
 import { UpdateSettingDto } from './dto/update-setting.dto';
 import { UUID } from 'crypto';
-import { Brand } from './entities/brand.entity';
 @Controller('settings') 
 export class SettingsController {
   constructor(
@@ -241,10 +240,23 @@ searchBrandTimeParseInt(
   
   @Delete('delpram/:brandname')
   hardDelePrams(
-    @Param('brandname') brandName: string
+    @Param('brandname') brandname: string,
+    @Query('brandId') id: string
   )
   {
-    console.log(brandName);
+    console.log(brandname);
+    console.log(id);
     console.log("Funciton Checking ",this.hardDelePrams);
-  }
+   }
+   //second case
+    @Delete('delprams/:brandId')
+    hardDelePramsQuery(
+      @Param('brandId') brandId: string,
+      @Query('brandname') brandname:string
+    ) {
+      console.log(brandId);
+      console.log(brandname);
+      console.log("Funciton Checking ", this.hardDelePrams);
+    }
+    
 }
