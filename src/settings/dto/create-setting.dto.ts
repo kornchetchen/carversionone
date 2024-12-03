@@ -20,7 +20,6 @@ export class CreateSettingDto {
     @IsOptional()
     brandName: string;
     
-  
     
     @IsString({'message': 'Model is be a string'})
     @IsEnum(CarTypeEnum,{'message': 'Model must be a valid CarTypeEnum value'})

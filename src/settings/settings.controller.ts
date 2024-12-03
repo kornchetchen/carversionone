@@ -1,17 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Query, Delete} from '@nestjs/common';
 import { SettingsService } from './settings.service';
 import { CreateSettingDto } from './dto/create-setting.dto';
 import { UpdateSettingDto } from './dto/update-setting.dto';
-
-
+import { UUID } from 'crypto';
+import { Brand } from './entities/brand.entity';
 @Controller('settings') 
 export class SettingsController {
   constructor(
     private readonly settingsService: SettingsService) 
     {}
 
-
   @Post('brand')
+
 async createBrand(@Body() createSettingDto: CreateSettingDto) { 
     const brandsample = {
       brandName: 'brandName',
@@ -37,60 +37,85 @@ async createBrand(@Body() createSettingDto: CreateSettingDto) {
   }
 
 
-
-
-
-  @Get('cartypequery')
+  @Get('cartype')
  async getcartype(
-  @Query('cartype') cartype: string,
   @Query('cartypeId') cartypeId: string,
-  @Query('cartypeName') cartypeName: string,
-  @Query('cartypeDescription') cartypeDescription: string
+  @Query('model') model:string,
+  @Query('createdAt') create_at:Date,
+  @Query('updateAt') update_at: Date,
+  @Query('deletedBy') deleted_by: string
+
 ) {
 
-    console.log(cartype);
-    console.log(cartypeId);
-    console.log(cartypeName);
-    console.log(cartypeDescription);
-
-    return cartype ;
+  console.log(cartypeId);
+  console.log(model);
+  console.log(create_at);
+  console.log(update_at);
+  console.log(deleted_by);
   }
 
 
 
-
-
-
-
-  @Get('brandnames')
+  @Get('brand')
  async  getBrands(
-  @Query('brand') brand: string,
   @Query('brandId') brandId: string,
   @Query('brandName') brandName: string,
-  @Query('brandDescription') brandDescription: string
+  @Query('createdAt') createdAt:string,
+  @Query('updateAt') updateAt: string,
+  @Query('deletedBy') deletedBy: string
 
 ) {
-    console.log(brand);
     console.log(brandId);
     console.log(brandName);
-    console.log(brandDescription);
+    console.log(createdAt);
+    console.log(updateAt);
+    console.log(deletedBy);
 
-    return brand ;
+    return {brandId, brandName, createdAt, updateAt, deletedBy}
+
   }
 
 
 
 
   
-@Get('more') 
-searchSettings(
-  @Query('brandname') brandName: string,
-  @Query('cartype') cartype: string,
-): string {
+@Get('moreinfo') 
+getMoreInfo(
+  @Query('carInfoName') carInfo_name: string,
+  @Query('isActive') isActive: string,
+  @Query('year') year: string,
+  @Query('price') price: string,
+  @Query('color') cartype: string,
+  @Query('awd') awd: string,
+  @Query('car_id') car_id: UUID,
+  @Query('cartypeId') cartype_id: UUID,
+
+
+) {
+  console.log(carInfo_name);
+  console.log(isActive);
+  console.log(year);
+  console.log(price);
   console.log(cartype);
-  console.log(brandName);
-  return`Brand: ${brandName}, Cartype: ${cartype}`;
+  console.log(awd);
+  console.log(car_id);
+  console.log(cartype_id);
+
+  return {
+    carInfo_name,
+    isActive,
+    year,
+    price,
+    cartype,
+    awd,
+    car_id,
+    cartype_id
+  }
+
 }
+
+
+
 
 @Get('brandss')
 async searchBrand(
@@ -105,17 +130,18 @@ async searchBrand(
 
 
 
-@Get('brandsss')
+@Get('brands/:time')
 searchBrandTimeParseInt(
-  @Query('createAt') createAtParam: string,
-  @Query('updateAt') updateAtParam: string,
+  @Query('createAt') createAt: string,
+  @Query('updateAt') updateAt: string,
 ) {
-  console.log(createAtParam);
-  console.log(updateAtParam);
+  console.log(createAt);
+  console.log(updateAt);
+  return {createAt, updateAt}
 }
 
 
-  @Get('byId/:brand')
+  @Get('byid/:id/:brand')
   async findOnebarndById(
     @Param('id') id: string,
     @Param('brand') brand: string
@@ -128,7 +154,8 @@ searchBrandTimeParseInt(
   }
 
 
-  @Get('byCarType/:id/:cartype/:color') ///path first => param
+  @Get('bycartype/:id/:cartype/:color') 
+  //**///path first => param
   async findOnecartype(
     @Param('id') id: string,
     @Param('cartype') cartype: string,
@@ -141,7 +168,7 @@ searchBrandTimeParseInt(
     console.log("Car type you want ",this.findOnecartype);
   }
 
-  @Get(':brand')
+  @Get('brandtail/:brand/:model/:year/:price')
   async findWithBrandDetails(
     @Param('brand') brand: string,
     @Param('model') model: string,
@@ -156,42 +183,68 @@ searchBrandTimeParseInt(
     console.log("Car Detail ",this.findWithBrandDetails);
    }
 
-  @Get(':brand/:brandname')
-  async findOnecartypebrandName(@Param('brandName') brandName: string) { 
+  @Get(':branddetail/:brandname')
+  async findOnecartypebrandName(@Param('brandname') brandName: string) { 
     console.log(brandName);
+    console.log("Funciton Checking ",this.findOnecartypebrandName);
   }
-  
-  @Get(':cartype/:model')
+
+  @Get(':cartyemd/:model')
   async findOnecartypemodel(@Param('model')   model: string) { 
     console.log(model);
   }
-//uuid
-  @Patch('cartype/:id')
+  @Patch('cartypeiden/:id')
   updateCartype(@Param('id') id: UpdateSettingDto,
    @Body() updateSettingDto: UpdateSettingDto) {
     console.log(updateSettingDto);
   }
 
-  @Patch('brand/:id')
+
+  @Patch('brandiden/:id') 
   updateBrand(@Param('id') id: string, @Body() updateSettingDto: UpdateSettingDto) {
     console.log(updateSettingDto);
   }
 
-  @Patch('brand/:id')
+  @Patch('brandqriden/:id/:createat/:updateat') 
   async updateBrandDates (
     @Param('id') id: string,
-    @Body() updateSettingDto: UpdateSettingDto,
-    @Query('createAt') createAtParam: UpdateSettingDto,
-    @Query('updateAt') updateAtParam: UpdateSettingDto,
+    // @Body() updateSettingDto: UpdateSettingDto,
+    @Param('createat') createat: string,
+    @Param('updateat') updateat: string,
   ) {
-    console.log(createAtParam);
-    console.log(updateAtParam);
+    console.log(id);
+    console.log(createat);
+    console.log(updateat);
+    console.log("Funciton Checking ",this.updateBrandDates);
 //parma private static //quer for using on public 
 
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: UpdateSettingDto) {
-    console.log(id);
+  @Delete('delparam/:cartype/:color')
+ harddeleteCartype(
+  @Param('cartype') cartype: string,
+  @Param('color') color: UpdateSettingDto
+) {
+  console.log(cartype);
+  console.log(color);
+  console.log("Funciton Checking ",this.harddeleteCartype);
+}
+
+
+  @Delete('/delparam/:cartypeid')
+ hardDelparamId(
+    @Param('cartypeid') cartypeid: string) 
+  {
+    console.log(cartypeid);
+    console.log("Funciton Checking ",this.hardDelparamId);
+  }
+  
+  @Delete('delpram/:brandname')
+  hardDelePrams(
+    @Param('brandname') brandName: string
+  )
+  {
+    console.log(brandName);
+    console.log("Funciton Checking ",this.hardDelePrams);
   }
 }
