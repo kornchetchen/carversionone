@@ -1,5 +1,5 @@
 import { CarInfo } from "src/promotions/entities/carinfo.entity";
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn, PrimaryColumn, JoinColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({'name': 'carType'})
 export class CarType {
