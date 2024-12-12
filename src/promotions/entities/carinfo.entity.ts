@@ -2,10 +2,6 @@ import { CarType } from "src/settings/entities/cartype.entity";
 import { Promotion } from "src/promotion/entities/promotion.entity";
 import { Entity, Column, PrimaryColumn, ManyToOne, ManyToMany, PrimaryGeneratedColumn, JoinTable, CreateDateColumn, DeleteDateColumn, UpdateDateColumn, JoinColumn } from "typeorm";
 import { Brand } from "src/settings/entities/brand.entity";
-// export enum DriveType {
-//     TWO_WHEEL_DRIVE = '2WD',
-//     FOUR_WHEEL_DRIVE = '4WD',
-//   }
 @Entity({'name': 'carInfo'})
 export class CarInfo {
   @PrimaryGeneratedColumn('uuid')
